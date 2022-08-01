@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1> {{ room.name }}  </h1>
+
+<pre>
+{{ room.description }}
+</pre>
+
+
+{% if room.name in ["dead", "Escape Pod", "The End"] %}
+     <p><a href="/">Play Again?</a></p>
+{% elif room.name in ["Central Corridor"] %}
+    <p>
+    <form action="/firstroom" method="POST">
+
+        <input type="submit" name="tell a joke" value="Tell a joke">
+        <input type="submit" name="dodge!" value="Dodge!">
+        <input type="submit" name="shoot!" value="Shoot!">
+    </form>
+    </p>
+
+{% elif room.name in ["Laser Weapon Armory"] %}
+    <p>
+    <form action="/secondroom" method="POST">
+
+        <input type="submit" name="1" value="1">
+        <input type="submit" name="2" value="2">
+        <input type="submit" name="3" value="3">
+    <br>
+        <input type="submit" name="4" value="4">
+        <input type="submit" name="5" value="5">
+        <input type="submit" name="6" value="6">
+    <br>
+        <input type="submit" name="7" value="7">
+        <input type="submit" name="8" value="8">
+        <input type="submit" name="9" value="9">
+    <br>
+        <input type="submit" name="*" value="*">
+        <input type="submit" name="0" value="0">
+        <input type="submit" name="#" value="#">
+    </form>
+    </p>
+
+{% elif room.name in ["The Bridge"] %}
+    <p>
+    <form action="/thirdroom" method="POST">
+
+        <input type="submit" name="throw the bomb" value="Throw the bomb">
+        <input type="submit" name="slowly place the bomb" value="Slowly place the bomb">
+    </form>
+    </p>
+
+{% else %}
+    <p>
+    <h3> HELLO <h3>
+{% endif %}
+
+
+{% endblock %}
